@@ -1,9 +1,10 @@
 
-$(".section-2-circle").click(event => {
+$(".heart-icon").click(event => {
     console.log($("#list_container").children());
     listLength = $("#list_container").children().length;
     for (var i = 0; i < listLength; i++) {
-        if (event.target.id == i) {
+        console.log(event.target.id);
+        if ((event.target.id == i) || (event.target.id == "icon" + i)) {
             console.log(i + " is clicked");
             sendToServer(i).
                 then(res => {
