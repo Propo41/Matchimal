@@ -1,0 +1,139 @@
+<%- include("partials/header"); -%>
+    <!--tabs-->
+    <div class="section4">
+        <div class="container">
+            <h1>Update Your Profile</h1>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about"
+                        type="button" role="tab" aria-controls="about" aria-selected="true">
+                        ABOUT ME
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pets-tab" data-bs-toggle="tab" data-bs-target="#pets" type="button"
+                        role="tab" aria-controls="pets" aria-selected="false">
+                        MY PETS
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="add-tab" data-bs-toggle="tab" data-bs-target="#add" type="button"
+                        role="tab" aria-controls="add" aria-selected="false">
+                        ADD PET
+                    </button>
+                </li>
+            </ul>
+            <!--about me-->
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+                    <div class="section_box">
+                        <div class="container register-form">
+                            <div class="form">
+                                <div class="form-content">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="label" for="fname">First Name*</label>
+                                                <input type="text" id="firstName" placeholder="Enter Your First Name"
+                                                    value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label" for="fname">Email*</label>
+                                                <input type="text" id="email" placeholder="Enter Your Email" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label" for="fname">Street Address</label>
+                                                <input type="text" id="streetAddress"
+                                                    placeholder="Enter Your Street Address" value="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="label" for="fname">Last Name*</label>
+                                                <input type="text" id="lastName" placeholder="Enter Your Last Name"
+                                                    value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label" for="fname">Phone Number*</label>
+                                                <input type="text" id="phoneNumber-about-us"
+                                                    placeholder="Enter Your Phone Number" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label" for="fname">City*</label>
+                                                <input type="text" id="city-about-me" placeholder="Enter Your City Town"
+                                                    value="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="about-me-update-btn" type="button" value="UPDATE" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--My pets-->
+                <div class="tab-pane fade" id="pets" role="tabpanel" aria-labelledby="pets-tab">
+                    <div class="section_box">
+                        <h1>okok11</h1>
+                    </div>
+                </div>
+                <!--add pets-->
+                <div class="tab-pane fade" id="add" role="tabpanel" aria-labelledby="add-tab">
+                    <div class="section_box">
+                        <div class="container register-form">
+                            <div class="form">
+                                <div class="form-content">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="label" for="fname">Pet Name*</label>
+                                                <input id="petName" type="text" placeholder="Enter Your Pet Name"
+                                                    value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label" for="fname">Recent Diagnosed Disease</label>
+                                                <input id="recentDiagnosedDisease" type="text"
+                                                    placeholder="Enter Secondary Breed" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label" for="fname">Recent Vaccination Date</label>
+                                                <input id="vaccinationDate" type="text"
+                                                    placeholder="Enter Recent Vaccination Date" value="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="label" for="fname">Primary Breed*</label>
+                                                <input id="primaryBreed" type="text" placeholder="Enter Primary Breed"
+                                                    value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label" for="fname">Date Of Birth*</label>
+                                                <input id="birthDate" type="text" placeholder="Enter Date of Birth"
+                                                    value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label" for="fname">Gender*</label>
+                                                <input id="gender" type="text" placeholder="Enter Your Pet's Gender"
+                                                    value="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row0">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <label class="label label1" for="bio">Bio*</label>
+                                            <input id="bio" type="text" id="bio" name="bio" placeholder="Enter Bio" />
+                                        </div>
+                                    </div>
+                                    <input id="addPet_updateBtn" type="button" value="Update" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end tabs-->
+    <%- include("partials/footer"); -%>

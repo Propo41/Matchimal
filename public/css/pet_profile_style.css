@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+	background-color: #F2F2F2;
+}
+:root {
+  --color-blue: #54bce7;
+  --color-ash: #F0F0F0;
+  --color-dark-ash: #1f232c;
+  --color-red:#EA5455;
+  --color-black-ash:#333333;
+  --color-light-ash:#707070;
+}
+/*navbar*/
+.bs-example {
+    background-color: var(--color-red);
+    padding: 0px 30px;
+    height: 60px;
+  }
+  .bg-light {
+    background-color: #ea5455 !important;
+    padding: 0px 30px;
+    height: 60px;
+  }
+  
+  .navbar-light .navbar-brand {
+    color: #ffffff;
+    font-family: "Shadows Into Light", cursive;
+    font-size: 40px;
+  }
+  
+  .navbar-light .navbar-nav .nav-link {
+    color: #ffffff;
+    font-family: "Saira Semi Condensed", sans-serif;
+    padding: 0px 40px;
+  }
+  .navbar-light .navbar-nav .nav-link img {
+    width: 30px;
+    height: 30px;
+    color: white;
+  }
+  
+/*end navbar*/
+
+/*body*/
+hr.solid {
+  border-top: 3px solid var(--color-light-ash);
+  margin-top: 5%;
+}
+
+
+.section2-pet-profile{
+	border-radius: 10px;
+	background-color: #FFFFFF;
+	padding: 20px;
+	max-width: 95%;
+	margin: 5%;
+
+}
+.section2-pet-profile h2{
+   font-family: 'Saira Semi Condensed', sans-serif;
+   color: var(--color-red);
+   padding-left: 2%;
+   text-align: left;
+    margin-top: 8%;
+
+}
+.section2-pet-profile .row0{
+  margin-top: 5%;
+  margin-bottom: 3%;
+  margin-left: 3%;
+  font-family: 'Saira Semi Condensed', sans-serif;
+
+
+}
+.section2-pet-profile .row1{
+  margin-top: 10%;
+    margin-bottom: 3%;
+
+}
+.section2-pet-profile .row2{
+    margin-bottom: 3%;
+
+
+}
+.section2-pet-profile .row3{
+    margin-bottom: 1%;
+
+
+}
+
+
+/*--image-*/
+.round-image{
+  border-radius: 50%;
+  
+}
+
+.round-image:hover{
+  filter: grayscale(0);
+}
+
+.image-container{
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.box2{
+  margin-top: 30px;
+  width: 100%;
+  padding: 0;
+  border-style: solid;
+  border-color: white;
+ border-width: 2px;
+text-align: center;
+}
+
+.box2 img{
+  max-width: 70%;
+  width: 70%;
+}
+.box2 img{
+  line-height: 0;
+}
+.box2-modified{
+  border-color: #F2F2F2;
+  line-height: 0;
+  border-width:0 ;
+}
+
+/*---*/
+
+
+/*information*/
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0px solid rgba(0,0,0,0);
+    font-family: 'Saira Semi Condensed', sans-serif;
+
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+/* end information*/
+
+/*--button--*/
+.btn-warning {
+    color: white;
+    background-color: var(--color-red);
+    border-color: var(--color-red);
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 5%;
+    font-family: 'Saira Semi Condensed', sans-serif;
+}

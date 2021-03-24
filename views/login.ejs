@@ -1,0 +1,15 @@
+<%- include("partials/header_no_nav"); -%>
+<div class="section1">
+    <div class="container">
+        <h2>LOG IN</h2>
+        <form action="/action_page.php" id="form" class="form">
+            <input type="text" id="email" name="email" placeholder="Email">
+            <input type="password" id="password" name="password" placeholder="Password">
+            <input id="loginButton" onclick="login()" type="login" value="Log in">
+        </form>
+        <a class="nav-link active forgotPassword" href="#">Forgot Password?</a>
+        <h5>or log in with</h5>
+        <button type="button" class="btn btn-outline-dark">Google</button>
+    </div>
+</div>
+<%- include("partials/footer_no_nav"); -%>

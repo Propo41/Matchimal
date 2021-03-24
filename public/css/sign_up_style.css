@@ -1,0 +1,199 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #F2F2F2;
+}
+
+h2{
+    color: #333333;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.section0{
+    background-color: #EA5455;
+    padding: 0px 30px;
+    overflow: hidden;
+    height: 60px;
+
+}
+.section0 .nav-link{
+    color: #FFFFFF;
+    font-family: 'Shadows Into Light', cursive;
+    
+    font-size: 30px;
+
+}
+.form-content
+{
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    padding: 20px;
+    max-width: 100%;
+    margin-top: 40px;
+}
+
+input[type=text], select, textarea,input[type=password] {
+    width: 80%;
+    padding: 12px;
+    border: 2px solid #EA5455;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    resize: vertical;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: #333333;
+
+}
+
+input[type=Signup] {
+    background-color: #EA5455;
+    color: #FFFFFF;
+    border: none;
+    text-align: center;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 22px;
+    margin:20px 0px;
+    margin-left: 28%;
+    margin-right: 20%;
+    padding: 6px;
+    width: 45%;
+}
+
+input[type=Signup]:hover {
+    background-color: #F67576;
+}
+.btnSubmit
+{
+    border:none;
+    border-radius:10px;
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    background: #EA5455;
+    color: #fff;
+}
+.section2{
+    background-color: #EA5455;
+    padding: 0px 30px;
+    overflow: hidden;
+    height: 40px;
+    margin-top: 60px;
+
+}
+.btn{
+    color: #EA5455;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.btn-outline-dark{
+    border-radius: 25px;
+    border: 2px solid #EA5455;
+    margin-left: 43%;
+    
+
+}
+
+@media (max-width: 575px) {
+    input[type=signup] {
+
+        padding: 5px 0px;
+    }
+    .section1{
+        margin:15px;
+    }
+    .ContinueWith{
+        padding: 10px 10px;
+        margin-left: 282px;
+
+    }
+    .signIn{
+    padding: 2px 0px;
+    margin-left: -60px;
+
+}
+
+} 
+@media (min-width: 576px) and (max-width: 767px) { 
+    input[type=signup] {
+
+        padding: 5px 2px;
+    }
+    .ContinueWith{
+        padding: 10px 10px;
+        margin-left: 282px;
+
+    }
+    .signIn{
+    padding: 2px 0px;
+    margin-left: -60px;
+
+}
+ .btn-outline-dark{
+        width: 24%;
+
+}
+
+}
+
+@media (min-width : 767px) and (max-width:991px){
+    input[type=signup] {
+
+        padding: 5px 14px;
+    }
+    .ContinueWith{
+        padding: 10px 0px;
+        margin-left: 154px;
+
+    }
+    .signIn{
+    padding: 2px 0px;
+    margin-left: -36px;
+
+}
+
+}
+@media (min-width : 991px) and (max-width:1200px){
+    input[type=signup] {
+
+        padding: 5px 46px;
+    }
+    .ContinueWith{
+        padding: 10px 0px;
+        margin-left: 202px;
+
+    }
+    .signIn{
+    padding: 2px 0px;
+    margin-left: -24px;
+
+}
+
+}
+@media (min-width: 1200px){
+    input[type=signup] {
+
+        padding: 5px 110px;
+    }
+    .ContinueWith{
+        padding: 24px 10px;
+        margin-left: 392px;
+
+    }
+    .signIn{
+    padding: 2px 0px;
+    margin-left: -240px;
+
+}
+
+    
+}
