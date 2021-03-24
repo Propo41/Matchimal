@@ -1,0 +1,31 @@
+<%- include("partials/header"); -%>
+    <div class="section2-my-likes">
+        <h2>My Likes</h2>
+        <section id="section-3">
+            <div class="container">
+                <div class="row">
+                    <% for(var i=0; i<list.length; i++){ %>
+                        <div class="col-md-4 col-lg-3 col-sm-6">
+                            <div
+                                class="section-2-rectangle d-flex flex-column justify-content-center align-items-center">
+                                <div class="section-2-content">
+                                    <a href="view_profile/<%=list[i].profileUrl%>">
+                                        <img src="../public/image/ic_dummy_pet.png" class="section-2-img" />
+                                    </a>
+                                    <p style="padding-top: 10px;" class="bold-font">
+                                        <%= list[i].name %>
+                                    </p>
+                                    <p>
+                                        <%= list[i].bio.substring(0,50)+ "..." %>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+        </section>
+
+
+    </div>
+    <%- include("partials/footer"); -%>

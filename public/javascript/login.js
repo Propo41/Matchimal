@@ -1,5 +1,4 @@
 function login() {
-    alert("login clicked");
     loginInfo = {
         email: $("#email").val(),
         password: $("#password").val()
@@ -7,7 +6,8 @@ function login() {
     };
     sendToServer(loginInfo).then(res=>{
         if(res.status == 1){
-            alert("Logged in successfully. Redirecting...");
+            //alert("Logged in successfully. Redirecting...");
+            console.log("logging in.");
             window.location = "/" + res.uid + "/find-matches";
         }else {
             alert(res.message);
