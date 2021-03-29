@@ -1,0 +1,153 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+  /*
+  https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+  custom constants
+  */
+  --color-blue: #54bce7;
+  --color-ash: #F0F0F0;
+  --color-dark-ash: #1f232c;
+  --color-red:#EA5455;
+  --color-black-ash:#333333;
+  --color-white-ash:#F2F2F2;
+  --color-yellow:#FFD96A;
+}
+
+/* nav bar toop */
+.bs-example {
+  background-color: var(--color-red);
+  padding: 0px 30px;
+  height: 60px;
+}
+.bg-light {
+  background-color: #ea5455 !important;
+  padding: 0px 30px;
+  height: 60px;
+}
+
+.navbar-light .navbar-brand {
+  color: #ffffff;
+  font-family: "Shadows Into Light", cursive;
+  font-size: 40px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #ffffff;
+  font-family: "Saira Semi Condensed", sans-serif;
+  padding: 0px 40px;
+}
+.navbar-light .navbar-nav .nav-link img {
+  width: 30px;
+  height: 30px;
+  color: white;
+}
+/* ** */  
+
+
+body{
+  background-color: var(--color-white-ash);
+
+}
+h1{
+  color: var(--color-black-ash);
+  font-family: 'Saira Semi Condensed', sans-serif;
+  text-align: center;
+  padding-top: 5%;
+
+}
+
+
+.section-0{
+  margin-top: 6%;
+     font-family: 'Saira Semi Condensed', sans-serif;
+
+}
+
+.section-0 h4{
+
+}
+
+.section-1{
+  border-radius: 10px;
+  background-color: white;
+  margin-bottom: 11%;
+  padding: 10%;
+  position: relative;
+
+}
+.section-1 h3{
+   margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-red);
+
+}
+
+.section2{
+  border-radius: 10px;
+  background-color: white;
+  padding: 2%;
+
+}
+
+
+.round-img{
+    width: 100%;
+    padding-top: 2%;
+
+}
+
+#numberOfUsers{
+  padding-left: 200px;
+}
+
+#separator{
+  height: 100px;
+}
+
+
+@media (max-width: 575px) {
+  #numberOfPets{
+    padding-left: 190px;
+    padding-bottom: 40px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  #numberOfUsers{
+    padding-left: 180px;
+  }
+  #numberOfPets{
+    padding-left: 154px;
+    padding-bottom: 75px;
+  }
+  #separator{
+    height: 180px;
+  }
+}
+
+@media (min-width : 767px) and (max-width:991px){
+  #numberOfPets{
+    padding-left: 100px;
+  }
+
+}
+@media (min-width : 991px) and (max-width:1200px){
+  #numberOfUsers{
+    padding-left: 200px;
+  }
+  #numberOfPets{
+    padding-left: 28px;
+  }
+
+}
+@media (min-width: 1200px){
+
+
+
+}

@@ -1,6 +1,12 @@
+const spinner = $("#spinner_id");
+
 $(".heart-icon").click((event) => {
+  spinner.show();
   console.log($("#list_container").children());
   listLength = $("#list_container").children().length;
+  if (listLength == 0) {
+    spinner.hide();
+  }
   for (var i = 0; i < listLength; i++) {
     console.log(event.target.id);
     if (event.target.id == "icon" + i) {
@@ -10,8 +16,10 @@ $(".heart-icon").click((event) => {
         $("#icon" + i).attr("src", "image/ic_heart_filled.svg");
       }
       console.log(i + " is clicked");
+
       sendToServer(i, null, "/service-matches-likes")
         .then((res) => {
+          spinner.hide();
           if (res.status === "like") {
             // if saved to database successful, then update UI
             $("#icon" + res.index).attr("src", "image/ic_heart_filled.svg");
@@ -24,6 +32,7 @@ $(".heart-icon").click((event) => {
           }
         })
         .catch(() => {
+          spinner.hide();
           console.log("error like");
         });
       break;
@@ -44,6 +53,7 @@ async function sendToServer(index, msg, url) {
   return await res.json();
 }
 
+// love reacting
 $(".section-2-img").click((event) => {
   console.log("profile clicked ");
   listLength = $("#list_container").children().length;
@@ -53,7 +63,6 @@ $(".section-2-img").click((event) => {
       sendToServer(i, null, "/service-matches-profile-click")
         .then((res) => {
           window.location = res.url;
-
         })
         .catch((e) => {
           console.log("error");

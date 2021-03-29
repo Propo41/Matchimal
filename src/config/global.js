@@ -1,13 +1,3 @@
-const nodemailer = require("nodemailer");
-// BUG: sometimes, doenst work, make sure to install the package again
-var transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "dark.homies.69@gmail.com",
-    pass: "darkhomiesrules",
-  },
-});
-
 const actions = {
   // firebase config
   firebaseConfig: {

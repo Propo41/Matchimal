@@ -10,7 +10,7 @@
                                 class="section-2-rectangle d-flex flex-column justify-content-center align-items-center">
                                 <div class="section-2-content">
                                     <a href="view_profile/<%=list[i].profileUrl%>">
-                                        <img src="../public/image/ic_dummy_pet.png" class="section-2-img" />
+                                        <img src="<%=list[i].petImageUrl%>" class="section-2-img" />
                                     </a>
                                     <p style="padding-top: 10px;" class="bold-font">
                                         <%= list[i].name %>
@@ -25,7 +25,5 @@
                         <% } %>
                 </div>
         </section>
-
-
     </div>
     <%- include("partials/footer"); -%>

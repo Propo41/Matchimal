@@ -1,38 +1,52 @@
 var firebase = require("firebase/app");
 require("firebase/auth");
 require("firebase/database");
+require("firebase/storage");
 const config = require("./src/config/global.js");
 firebase.initializeApp(config.firebaseConfig);
 const express = require("express");
+const app = express();
 const bodyParser = require("body-parser");
 const util = require("./src/services/util.js"); // custom library
 const ejs = require("ejs");
-const app = express();
+var Multer = require("multer");
+const multer = Multer({
+  storage: Multer.memoryStorage(),
+  limits: {
+    fileSize: 20 * 1024 * 1024, // no larger than 5mb, you can change as needed.
+  },
+});
+
 //To use multiple static assets directories,
 // call the express.static middleware function multiple times:
+app.use("/", express.static("public"));
 app.use("/:userId", express.static("public"));
 app.use("/:userId/:targetUrl", express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
-app.use(express.json({ limit: "1mb" }));
+app.use(express.json({ limit: "20mb" }));
 
 /* ------------------- DECLARATIONS ---------------------- */
 var userUid = null;
-const LAYOUT_DIR = __dirname + "/src/layouts/";
-const ERROR_ACCESS_DENIED = "ACCESS DENIED! SESSION EXPIRED";
-
 /* ------------------- ROUTES ---------------------- */
 // home page
-app.get("/start", function (req, res) {
+app.get("/", function (req, res) {
   if (!util.isUserLoggedIn(res)) {
-    res.sendFile(LAYOUT_DIR + "/start.html");
+    res.render("home", {
+      script: "home.js",
+      style: "home_style.css",
+    });
+    //util.addTeamInfo();
   }
 });
 
 // contact
 app.get("/contact", function (req, res) {
-  if (!isUserLoggedIn(res)) {
-    res.sendFile(LAYOUT_DIR + "/contact.html");
+  if (!util.isUserLoggedIn(res)) {
+    res.render("contact", {
+      script: "contact.js",
+      style: "contact_style.css",
+    });
   }
 });
 
@@ -46,7 +60,16 @@ app.get("/about-us", function (req, res) {
 // team
 app.get("/team", function (req, res) {
   if (!util.isUserLoggedIn(res)) {
-    res.send("team page");
+    // get team info from database
+    util.getTeamInfo().then((team) => {
+      /*   console.log("team: ");
+      console.log(team); */
+      res.render("team_page", {
+        script: "team_page.js",
+        style: "team_page_style.css",
+        team: team,
+      });
+    });
   }
 });
 
@@ -56,7 +79,7 @@ app.get("/login", function (req, res) {
     /*   res.sendFile(LAYOUT_DIR + "/login.html"); */
     res.render("login", {
       script: "login.js",
-      style: "login_style.css",
+      style: "login_signup_style.css",
     });
   }
 });
@@ -66,7 +89,7 @@ app.get("/sign-up", function (req, res) {
   if (!util.isUserLoggedIn(res)) {
     res.render("sign_up", {
       script: "sign_up.js",
-      style: "login_style.css",
+      style: "login_signup_style.css",
     });
   }
 });
@@ -93,7 +116,7 @@ app.get("/:userId/edit-profile", function (req, res) {
       userUid: userUid,
     });
   } else {
-    res.send(ERROR_ACCESS_DENIED);
+    res.render("session_expired");
   }
 });
 
@@ -108,7 +131,7 @@ app.get("/:userId/find-matches", function (req, res) {
           list: result.availablePets,
           userUid: userUid,
           usersLikedPetKeysIndex: result.usersLikedPetKeysIndex,
-          style: "private_style.css",
+          style: "find_matches_style.css",
         });
         console.log(req.body);
       })
@@ -116,7 +139,7 @@ app.get("/:userId/find-matches", function (req, res) {
         console.error("error: " + e.message);
       });
   } else {
-    res.send(ERROR_ACCESS_DENIED);
+    res.render("session_expired");
   }
 });
 
@@ -143,7 +166,7 @@ app.get("/:userId/my-likes", function (req, res) {
       }
     });
   } else {
-    res.send("You have no access!");
+    res.render("session_expired");
   }
 });
 
@@ -156,9 +179,77 @@ app.get("/log-out", function (req, res) {
       userUid = null;
       // redirect user to start page
       console.log("logging out user...redirecting");
-      res.redirect("/start");
+      res.redirect("/");
     })
     .catch((error) => {});
+});
+
+// admin-LOGIN
+app.get("/admin-login", function (req, res) {
+  res.render("admin_login", {
+    script: "admin_login.js",
+    style: "admin_login.css",
+  });
+});
+
+// admin-LOGIN
+app.get("/admin/home", function (req, res) {
+  util
+    .getStatsForAdmin()
+    .then((stats) => {
+      res.render("admin_home", {
+        script: "admin_home.js",
+        style: "admin_home.css",
+        stats: stats,
+      });
+    })
+    .catch((e) => {
+      console.log(e.message);
+    });
+});
+
+// admin-users
+app.get("/admin/users", function (req, res) {
+  util
+    .getUsersList()
+    .then((users) => {
+      res.render("admin_users", {
+        script: "admin_users.js",
+        style: "admin_user_pet_style.css",
+        users: users,
+      });
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+});
+
+// admin-PETS
+app.get("/admin/pets", function (req, res) {
+  util
+    .getPetsList()
+    .then((pets) => {
+      res.render("admin_pets", {
+        script: "admin_pets.js",
+        style: "admin_user_pet_style.css",
+        pets: pets,
+      });
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+});
+
+// private: view pet profile
+app.get("/admin/pets/:targetUrl", function (req, res) {
+  util.fetchPetProfile(req.params.targetUrl).then((pet) => {
+    res.render("pet_profile", {
+      script: "pet_profile.js",
+      style: "pet_profile_style.css",
+      pet: pet,
+      userUid: userUid,
+    });
+  });
 });
 
 /* ------------------- POST METHODS ---------------------- */
@@ -172,8 +263,14 @@ app.post("/contact", function (req, res) {
     message: req.body.message,
   };
 
-  util.sendEmail(contactUsInfo);
-  res.redirect("/contact");
+  util
+    .sendEmail(contactUsInfo)
+    .then(() => {
+      res.redirect("/contact");
+    })
+    .catch((e) => {
+      console.log(e.message);
+    });
 });
 
 // private: find-matches-like-pet
@@ -261,17 +358,146 @@ app.post("/service-edit-profile-about-me-update", function (req, res) {
 app.post("/service-user-login", function (req, res) {
   console.log("receiving data from client: ");
   console.log(req.body);
-  util.signInUser(req.body, res).then((reply) => {
-    userUid = reply.uid;
-    res.json(reply);
-  });
+  util
+    .signInUser(req.body, res)
+    .then((reply) => {
+      userUid = reply.uid;
+      res.json(reply);
+    })
+    .catch((e) => {
+      res.json({
+        status: -1,
+        message: e.message,
+      });
+    });
 });
 
-app.post("/service-user-add-pet", function (req, res) {
+app.post("/profile", multer.single("avatar"), function (req, res, next) {
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+  if (req.file) {
+    console.log(req.body);
+    console.log(req.file);
+
+    util
+      .uploadImageToStorage(req.file, "1234")
+      .then((success) => {
+        console.log(success);
+        res.status(200).send({
+          status: "success",
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+});
+
+app.post("/service-user-add-pet", multer.single("avatar"), function (req, res) {
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+  console.log("Add pet: receiving data from client: ");
+  var pet = {
+    petName: req.body.petName,
+    primaryBreed: req.body.primaryBreed,
+    bio: req.body.bio,
+    birthDate: req.body.birthDate,
+    ownerUid: userUid,
+    recentDiagnosedDisease: req.body.recentDiagnosedDisease,
+    vaccinationDate: req.body.vaccinationDate,
+    gender: req.body.gender,
+  };
+  util
+    .addPet(pet, req.file)
+    .then((status) => {
+      console.log("pet created successfully.");
+      res.json(status);
+    })
+    .catch((e) => {
+      console.log(e.message);
+    });
+});
+
+app.post("/service-edit-profile-my-pets", function (req, res) {
+  console.log("My pets: receiving data from client: ");
   console.log(req.body);
-  util.addPet(req.body, userUid).then((status) => {
-    res.json(status);
-  });
+  util
+    .getMyPets(userUid)
+    .then((pets) => {
+      res.json(pets);
+    })
+    .catch((e) => {
+      console.log(e.message);
+      res.json({ status: "failure" });
+    });
+});
+
+app.post("/service-user-delete-pet", function (req, res) {
+  console.log("My pets-delete: receiving data from client: ");
+  util
+    .deletePet(req.body.key, userUid)
+    .then(() => {
+      res.json({ status: "success" });
+    })
+    .catch((e) => {
+      res.json({ status: "failure" });
+      console.log(e.message);
+    });
+});
+
+// ADMIN: admin-login
+app.post("/service-admin-login", function (req, res) {
+  console.log("receiving data from client: ");
+  console.log(req.body);
+  util
+    .signInAdmin(req.body, res)
+    .then((reply) => {
+      if (reply.id == req.body.id && reply.pin == req.body.pin) {
+        console.log("matched!");
+        // admin sign in
+        userUid = reply.id;
+        res.json({ status: 1, message: "Matched" });
+      } else {
+        console.log("incorrect!");
+
+        res.json({ status: -1, message: "Incorrect input provided." });
+      }
+    })
+    .catch((e) => {
+      res.json({ status: -2, message: "error fetching info" });
+    });
+});
+
+// ADMIN: delete user
+app.post("/service-admin-delete-user", function (req, res) {
+  console.log("receiving data from client: ");
+  console.log(req.body);
+  util
+    .deleteUser(req.body.key)
+    .then((status) => {
+      res.json({ status: status });
+    })
+    .catch((e) => {
+      console.log(e.message);
+      res.json({ status: "failure" });
+    });
+});
+
+// ADMIN: delete pet
+app.post("/service-admin-delete-pet", function (req, res) {
+  console.log("receiving data from client: ");
+  console.log(req.body);
+  util
+    .deletePet(req.body.pet, req.body.owner)
+    .then((status) => {
+      if (status) {
+        res.json({ status: "success" });
+      }
+    })
+    .catch((e) => {
+      console.log(e.message);
+      res.json({ status: "failure" });
+    });
 });
 
 /* ------------------- ENTRY POINT: PORT 3000 ---------------------- */

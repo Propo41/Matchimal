@@ -1,4 +1,6 @@
 <%- include("partials/header"); -%>
+<div id="spinner_id" class="loading" style="display: none;"></div>
+
     <!--tabs-->
     <div class="section4">
         <div class="container">
@@ -65,7 +67,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input id="about-me-update-btn" type="button" value="UPDATE" />
+                                    <input id="about-me-update-btn" type="submit" value="UPDATE" />
                                 </div>
                             </div>
                         </div>
@@ -73,8 +75,7 @@
                 </div>
                 <!--My pets-->
                 <div class="tab-pane fade" id="pets" role="tabpanel" aria-labelledby="pets-tab">
-                    <div class="section_box">
-                        <h1>okok11</h1>
+                    <div id="my-pets-list-container" class="add-pet-parent-container">
                     </div>
                 </div>
                 <!--add pets-->
@@ -83,57 +84,73 @@
                         <div class="container register-form">
                             <div class="form">
                                 <div class="form-content">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="label" for="fname">Pet Name*</label>
-                                                <input id="petName" type="text" placeholder="Enter Your Pet Name"
-                                                    value="" />
+                                    <form id="form-id" onsubmit='return onPetAddClick(this)' method="post">
+                                        <!-- pet image add -->
+                                        <div class="d-flex flex-row justify-content-center mb-3">
+                                            <div class="circular">
+                                                <img id="pet_img" src="/public/image/ic_dummy_pet.png"
+                                                    class="rounded-circle">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="label" for="fname">Recent Diagnosed Disease</label>
-                                                <input id="recentDiagnosedDisease" type="text"
-                                                    placeholder="Enter Secondary Breed" value="" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="label" for="fname">Recent Vaccination Date</label>
-                                                <input id="vaccinationDate" type="text"
-                                                    placeholder="Enter Recent Vaccination Date" value="" />
-                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-center mb-4 text-center">
+                                            <input type="file" name="avatar" id="img-input" style="display:none;" />
+                                            <label class="choose_file"  for="img-input">Choose
+                                                File</label>
                                         </div>
 
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="label" for="fname">Primary Breed*</label>
-                                                <input id="primaryBreed" type="text" placeholder="Enter Primary Breed"
-                                                    value="" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="label" for="fname">Date Of Birth*</label>
-                                                <input id="birthDate" type="text" placeholder="Enter Date of Birth"
-                                                    value="" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="label" for="fname">Gender*</label>
-                                                <input id="gender" type="text" placeholder="Enter Your Pet's Gender"
-                                                    value="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row0">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <label class="label label1" for="bio">Bio*</label>
-                                            <input id="bio" type="text" id="bio" name="bio" placeholder="Enter Bio" />
-                                        </div>
-                                    </div>
-                                    <input id="addPet_updateBtn" type="button" value="Update" />
                                 </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="label" for="fname">Pet Name*</label>
+                                            <input name="petName" id="petName" type="text"
+                                                placeholder="Enter Your Pet Name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="label" for="fname">Recent Diagnosed Disease</label>
+                                            <input name="recentDiagnosedDisease" id="recentDiagnosedDisease" type="text"
+                                                placeholder="Enter Secondary Breed" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="label" for="fname">Recent Vaccination Date</label>
+                                            <input name="vaccinationDate" id="vaccinationDate" type="date"
+                                                placeholder="Enter Recent Vaccination Date" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="label" for="fname">Primary Breed*</label>
+                                            <input name="primaryBreed" id="primaryBreed" type="text"
+                                                placeholder="Enter Primary Breed" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="label" for="fname">Date Of Birth*</label>
+                                            <input name="birthDate" id="birthDate" type="date"
+                                                placeholder="Enter Date of Birth" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="label" for="fname">Gender*</label>
+                                            <input id="gender" type="text" placeholder="Enter Your Pet's Gender"
+                                                name="gender" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row0">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <label class="label label1" for="bio">Bio*</label>
+                                        <textarea id="bio" type="text" id="bio" name="bio"
+                                            placeholder="Enter Bio"></textarea>
+                                    </div>
+                                </div>
+                                <input id="addPet_updateBtn" type="submit" value="ADD PET">
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!--end tabs-->
     <%- include("partials/footer"); -%>

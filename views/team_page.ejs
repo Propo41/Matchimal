@@ -1,0 +1,153 @@
+<%- include("partials/header_home"); -%>
+    <h1 style="margin-top:30px;"></h1>
+    <div class="container-fluid fixed-padding d-flex align-items-stretch">
+        <div style="display: flex;  position:relative;" class="row" style="margin-top: 10px; margin-bottom: 10px;">
+            <div class="col-lg-4 col-sm-4">
+                <div class="innerClass">
+                    <div class="box2 box2-modified">
+                        <img id="img1" src="<%=team[0].image%>" class="round-image" alt="">
+                    </div>
+                    <div class="box3">
+                        <h5 id="member_1_name">
+                            <%=team[0].name%>
+                        </h5>
+                        <h5 id="member_1_contribution">
+                            <%=team[0].contribution%>
+                        </h5>
+                        <p id="member_1_description">
+                            <%=team[0].description%>
+                        </p>
+                        <div style="position:absolute; bottom:0;" class="container-fluid">
+                            <div class="row">
+                                <div class="col-4 card-icon">
+                                    <div class="icon-box">
+                                        <a id="fbLink1" href="<%=team[0].facebook%>">
+                                            <i class="fa fa-facebook-square"
+                                                style="font-size:40px;color:#EA5455; margin-left:20px"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-4 card-icon">
+                                    <div class="icon-box">
+                                        <a id="linkedIn1" href="<%=team[0].linkedin%>">
+                                            <i class="fa fa-linkedin-square"
+                                                style="font-size:40px;color:#EA5455; margin-left:20px"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div style="border-right: none" class="col-4 card-icon">
+                                    <div class="icon-box">
+                                        <a id="github1" href="<%=team[0].github%>">
+                                            <i class="fa fa-github"
+                                                style="font-size:40px;color:#EA5455; margin-left:20px"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-4">
+                <div class="innerClass">
+                    <div class="box2 box2-modified">
+                        <img id="img2" src="<%=team[1].image%>" class="round-image" alt="">
+                    </div>
+                    <div class="box3">
+                        <h5 id="member_2_name">
+                            <%=team[1].name%>
+                        </h5>
+                        <h5 id="member_2_contribution">
+                            <%=team[1].contribution%>
+                        </h5>
+                        <p id="member_2_description">
+                            <%=team[1].description%>
+                        </p>
+
+                        <div style="position:absolute; bottom:0;" class="container-fluid">
+                            <div class="row">
+                                <div class="col-4 card-icon">
+                                    <div class="icon-box">
+                                        <a id="fbLink2" href="<%=team[0].facebook%>">
+                                            <i class="fa fa-facebook-square"
+                                                style="font-size:40px;color:#EA5455; margin-left:20px"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-4 card-icon">
+                                    <div class="icon-box">
+                                        <a id="linkedIn2" href="<%=team[0].linkedin%>">
+                                            <i class="fa fa-linkedin-square"
+                                                style="font-size:40px;color:#EA5455; margin-left:20px"></i>
+
+                                        </a>
+                                    </div>
+                                </div>
+                                <div style="border-right: none" class="col-4 card-icon">
+                                    <div class="icon-box">
+                                        <a id="github2" href="<%=team[0].github%>">
+                                            <i class="fa fa-github"
+                                                style="font-size:40px;color:#EA5455; margin-left:20px"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-4">
+                <div class="innerClass">
+                    <div class="box2 box2-modified">
+                        <img id="img3" src="<%=team[2].image%>" class="round-image" alt="">
+                    </div>
+                    <div class="box3">
+                        <h5 id="member_3_name">
+                            <%=team[2].name%>
+                        </h5>
+                        <h5 id="member_3_contribution">
+                            <%=team[2].contribution%>
+                        </h5>
+                        <p id="member_3_description">
+                            <%=team[2].description%>
+                        </p>
+
+                        <div style="position:absolute; bottom:0;" class="container-fluid">
+                            <div class="row">
+                                <div class="col-4 card-icon">
+                                    <div class="icon-box">
+                                        <a id="fbLink3" href="<%=team[0].facebook%>">
+                                            <i class="fa fa-facebook-square"
+                                                style="font-size:40px;color:#EA5455; margin-left:20px"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-4 card-icon">
+                                    <div class="icon-box">
+                                        <a id="linkedIn3" href="<%=team[0].linkedin%>">
+                                            <i class="fa fa-linkedin-square"
+                                                style="font-size:40px;color:#EA5455; margin-left:20px;"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div style="border-right: none" class="col-4 card-icon">
+                                    <a id="github3" href="<%=team[0].github%>">
+                                        <i class="fa fa-github"
+                                            style="font-size:40px;color:#EA5455; margin-left:20px; "></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <%- include("partials/footer_home"); -%>
