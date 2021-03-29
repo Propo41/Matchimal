@@ -1,4 +1,5 @@
 <%- include("partials/header_no_nav"); -%>
+    <div id="spinner_id" class="loading" style="display: none;"></div>
     <div class="section1">
         <div class="container register-form">
             <div class="form">
@@ -34,19 +35,10 @@
                             </div>
                         </div>
                     </div>
-
                     <a onclick="signUp()" href="#" class="new-container custom-sign-up-button">Sign Up</a>
-
                     <div class="container-fluid adjust">
                         <div class="col-sm-4 ContinueWith">
-
-
                         </div>
-                        <!-- <div class="col-lg-3 col-md-3 col-sm-3 signIn"> SAMIA's BUTTON REMOVED
-                        <button type="button" class="input-button btn btn-outline-dark">Google</button>
-                    </div> -->
-                        <!--CHANGED TO THIS -->
-
                     </div>
                     <div class="">
                         <h5> Continue with:</h5>
@@ -57,7 +49,5 @@
                 </div>
             </div>
         </div>
-
-
     </div>
     <%- include("partials/footer_no_nav"); -%>

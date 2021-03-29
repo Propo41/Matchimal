@@ -30,7 +30,7 @@ app.use(express.json({ limit: "20mb" }));
 var userUid = null;
 /* ------------------- ROUTES ---------------------- */
 // home page
-app.get("/", function (req, res) {
+app.get("/", function (req, res) { 
   if (!util.isUserLoggedIn(res)) {
     res.render("home", {
       script: "home.js",
@@ -53,7 +53,10 @@ app.get("/contact", function (req, res) {
 // about us
 app.get("/about-us", function (req, res) {
   if (!util.isUserLoggedIn(res)) {
-    res.send("about us");
+    res.render("about_us", {
+      style: "about_us_style.css",
+      script: "about_us.js",
+    });
   }
 });
 
@@ -154,7 +157,7 @@ app.get("/:userId/my-likes", function (req, res) {
           script: "my_likes.js",
           list: myLikes,
           userUid: userUid,
-          style: "edit_profile.css",
+          style: "my_likes_nofav.css",
         });
       } else {
         res.render("placeholder_no_likes", {

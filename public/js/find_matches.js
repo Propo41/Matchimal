@@ -10,13 +10,8 @@ $(".heart-icon").click((event) => {
   for (var i = 0; i < listLength; i++) {
     console.log(event.target.id);
     if (event.target.id == "icon" + i) {
-      if ($("#icon" + i).attr("src") == "image/ic_heart_filled.svg") {
-        $("#icon" + i).attr("src", "image/ic_heart.svg");
-      } else {
-        $("#icon" + i).attr("src", "image/ic_heart_filled.svg");
-      }
+      toggleUi(i);
       console.log(i + " is clicked");
-
       sendToServer(i, null, "/service-matches-likes")
         .then((res) => {
           spinner.hide();
@@ -28,11 +23,13 @@ $(".heart-icon").click((event) => {
             $("#icon" + res.index).attr("src", "image/ic_heart.svg");
           } else {
             alert("something's wrong");
+            toggleUi(i);
             console.log(res);
           }
         })
         .catch(() => {
           spinner.hide();
+          toggleUi(i);
           console.log("error like");
         });
       break;
@@ -40,6 +37,13 @@ $(".heart-icon").click((event) => {
   }
 });
 
+function toggleUi(i) {
+  if ($("#icon" + i).attr("src") == "image/ic_heart_filled.svg") {
+    $("#icon" + i).attr("src", "image/ic_heart.svg");
+  } else {
+    $("#icon" + i).attr("src", "image/ic_heart_filled.svg");
+  }
+}
 async function sendToServer(index, msg, url) {
   const data = { index: index, msg: msg };
   const options = {

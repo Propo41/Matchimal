@@ -57,6 +57,8 @@ body {
 h2 {
   text-align: center;
   color: #ea5455;
+  font-weight: bold;
+  font-family: "Saira Semi Condensed", sans-serif;
 }
 h1{
   color: #EA5455;

@@ -4,6 +4,7 @@
  * if response is success, then redirect user to homepage
  * else show failure prompt
  */
+const spinner = $("#spinner_id");
 function signUp() {
   var flag = false;
   const userReg = {
@@ -24,14 +25,19 @@ function signUp() {
   }
 
   if (!flag) {
+    spinner.show();
     sendToServer(userReg).then((res) => {
+      spinner.hide();
       if (res.status === 1) {
+        spinner.hide();
         // if saved to database successful, then redirect user
         alert("Registration successful. You will be redirected soon...");
         window.location = "/" + res.uid + "/find-matches";
       } else {
+        spinner.hide();
         alert(res.message);
       }
+      
     });
   }
 }

@@ -62,10 +62,8 @@ $("#about-me-update-btn").click((event) => {
 
 $("#pets-tab").click((event) => {
   console.log($("#my-pets-list-container").children());
-
   const myNode = document.getElementById("my-pets-list-container");
   myNode.innerHTML = "";
-
   const parent = $("#my-pets-list-container");
   parent.textContent = "";
   console.log("my pets clicked");
@@ -156,6 +154,9 @@ function addPlaceHolderImage() {
     </div>
     `;
   $("#my-pets-list-container").append(div);
+  $("#my-pets-list-container").css("background-color", "white");
+  
+
 }
 
 /* ----- ADD PETS ----- */
