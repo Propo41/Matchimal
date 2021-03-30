@@ -15,6 +15,8 @@ custom constants
   --color-blue: #54bce7;
   --color-ash: #f0f0f0;
   --color-dark-ash: #1f232c;
+  --color-red: #ea5455;
+  --color-yellow: #ffd96a;
 }
 h2 {
   text-align: center;
@@ -117,7 +119,6 @@ h2 {
   padding: 40px;
   color: white;
 }
-
 .section1 {
   background-color: #ffffff;
   padding: 0px 30px;
@@ -129,17 +130,34 @@ h2 {
   font-family: "Shadows Into Light", cursive;
 
   font-size: 40px;
+  padding-top: 5px;
 }
 
 .login {
-  padding-left: 80%;
   font-family: "Saira Semi Condensed", sans-serif;
   font-weight: bold;
-  font-size: 20px;
-  color: #ea5455;
-  padding-top: 12px;
+  font-size: 22px;
+  padding-top: 20px;
+}
 
-  /*float: right;*/
+.topnav {
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  color: var(--color-red);
+  text-align: center;
+
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  color: var(--color-yellow);
+}
+
+.topnav-right {
+  float: right;
 }
 
 .section2 {
@@ -269,20 +287,6 @@ h2 {
 }
 
 /* NAVBAR */
-
-.logo {
-  font-family: "Shadows Into Light", cursive;
-  font-size: 40px;
-}
-
-.login {
-  padding-left: 80%;
-  font-family: "Saira Semi Condensed", sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  color: #ea5455;
-  padding-top: 12px;
-}
 
 .navbar-custom {
   background-color: #ea5455;

@@ -21,7 +21,7 @@ module.exports = {
     var user = firebase.auth().currentUser;
     if (user != null) {
       console.log("user already logged in. Redirecting to private page...");
-      serverResponse.redirect(`/user/${uid}/find-matches`);
+      serverResponse.redirect(`/${user.uid}/find-matches`);
       return true;
     }
     return false;
@@ -500,5 +500,24 @@ module.exports = {
     updates[`/users/${userId}/`] = null;
     await firebase.database().ref().update(updates);
     return "success";
+  },
+
+  // memberNumber should be 1,2,3
+  getMemberInfo: async function (memberNumber) {
+    const snapshot = await firebase
+      .database()
+      .ref(`team/${memberNumber - 1}`)
+      .once("value");
+    if (snapshot.exists()) {
+      return snapshot.val();
+    }
+  },
+
+  updateMemberInfo: async function (member, memberNumber) {
+    await firebase
+      .database()
+      .ref(`team/${memberNumber - 1}`)
+      .set(member);
+    return { status: "success" };
   },
 };

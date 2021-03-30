@@ -30,7 +30,7 @@ app.use(express.json({ limit: "20mb" }));
 var userUid = null;
 /* ------------------- ROUTES ---------------------- */
 // home page
-app.get("/", function (req, res) { 
+app.get("/", function (req, res) {
   if (!util.isUserLoggedIn(res)) {
     res.render("home", {
       script: "home.js",
@@ -236,6 +236,23 @@ app.get("/admin/pets", function (req, res) {
         script: "admin_pets.js",
         style: "admin_user_pet_style.css",
         pets: pets,
+      });
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+});
+
+// admin-team
+app.get("/admin/team-member/:number", function (req, res) {
+  util
+    .getMemberInfo(req.params.number)
+    .then((member) => {
+      res.render("admin_team", {
+        script: "admin_team.js",
+        style: "admin_team_style.css",
+        member: member,
+        number: req.params.number,
       });
     })
     .catch((e) => {
@@ -496,6 +513,21 @@ app.post("/service-admin-delete-pet", function (req, res) {
       if (status) {
         res.json({ status: "success" });
       }
+    })
+    .catch((e) => {
+      console.log(e.message);
+      res.json({ status: "failure" });
+    });
+});
+
+// ADMIN: update member
+app.post("/service-admin-update-member", function (req, res) {
+  console.log("receiving data from client: ");
+  console.log(req.body);
+  util
+    .updateMemberInfo(req.body.member, req.body.number)
+    .then((status) => {
+      res.json(status);
     })
     .catch((e) => {
       console.log(e.message);

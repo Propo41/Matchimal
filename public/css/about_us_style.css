@@ -1,3 +1,8 @@
+*{
+  --color-red: #ea5455;
+  --color-yellow: #ffd96a;
+}
+
 h1 {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -593,20 +598,6 @@ footer {
 
 /* NAVBAR */
 
-.logo {
-  font-family: "Shadows Into Light", cursive;
-  font-size: 40px;
-}
-
-.login {
-  padding-left: 80%;
-  font-family: "Saira Semi Condensed", sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  color: #ea5455;
-  padding-top: 12px;
-}
-
 .navbar-custom {
   background-color: #ea5455;
   font-family: "Saira Semi Condensed", sans-serif;
@@ -646,6 +637,46 @@ footer {
 }
 
 /*NAVBAR END*/
+.section1 {
+  background-color: #ffffff;
+  padding: 0px 30px;
+  overflow: hidden;
+  height: 70px;
+}
+
+.logo {
+  font-family: "Shadows Into Light", cursive;
+
+  font-size: 40px;
+  padding-top: 5px;
+}
+
+.login {
+  font-family: "Saira Semi Condensed", sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  padding-top: 20px;
+}
+
+.topnav {
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  color: var(--color-red);
+  text-align: center;
+
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  color: var(--color-yellow);
+}
+
+.topnav-right {
+  float: right;
+}
 
 /* FOOTER*/
 .footer-font {
