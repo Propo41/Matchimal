@@ -1,6 +1,8 @@
 # Matchimal
 A place where you can search for pets to mate with yours.
-- Made with nodejs as backend and css/bootstrap as frontend
+- Made with nodejs as backend and css/bootstrap as frontend and firebase as database
+- used the following modules: multer, google-storage, nodemailer, express, body-parser, express
+
 
 ![image](https://user-images.githubusercontent.com/46298019/112944971-72405b00-9155-11eb-8d9f-af8eb7917e32.png)
 
