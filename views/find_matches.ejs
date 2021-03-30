@@ -1,53 +1,50 @@
 <%- include("partials/header"); -%>
+<div id="spinner_id" class="loading" style="display: none;"></div>
   <div class="section-0">
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-4">
           <div class="section-1">
-
             <h4>Location</h4>
             <div class="form-outline">
               <input type="search" id="form1" class="form-control" placeholder="Enter Location" aria-label="Search" />
             </div>
-
             <h4>Breed</h4>
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 Select an option
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Option-1</a>
-                <a class="dropdown-item" href="#">Option-2</a>
-                <a class="dropdown-item" href="#">Option-3</a>
-              </div>
+              </a>
+  
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Option-1</a></li>
+                <li><a class="dropdown-item" href="#">Option-2</a></li>
+                <li><a class="dropdown-item" href="#">Option-3</a></li>
+              </ul>
             </div>
-
             <h4>Gender</h4>
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 Select an option
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Male</a>
-                <a class="dropdown-item" href="#">Female</a>
-              </div>
+              </a>
+  
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Option-1</a></li>
+                <li><a class="dropdown-item" href="#">Option-2</a></li>
+                <li><a class="dropdown-item" href="#">Option-3</a></li>
+              </ul>
             </div>
-
             <h4>Vaccination </h4>
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 Select an option
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Option-1</a>
-                <a class="dropdown-item" href="#">Option-2</a>
-                <a class="dropdown-item" href="#">Option-3</a>
-              </div>
+              </a>
+  
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Option-1</a></li>
+                <li><a class="dropdown-item" href="#">Option-2</a></li>
+                <li><a class="dropdown-item" href="#">Option-3</a></li>
+              </ul>
             </div>
-
           </div>
         </div>
         <div class="col-lg-9 col-md-8 col-sm-8">
@@ -55,34 +52,37 @@
             <div class="section2">
               <h2>AVAILABLE PETS</h2>
               <section id="section-3">
-                <div class="container">
-                  <div id="list_container" class="row">
-                    <% for(var i=0; i<list.length; i++){ %>
-                      <div class="col-md-4 col-lg-3 col-sm-6">
-                        <div class="section-2-rectangle d-flex flex-column justify-content-center align-items-center">
-                          <div class="section-2-content">
-
-                            <img id="img<%=i%>" src="../public/image/ic_dummy_pet.png" class="section-2-img" />
-
-                            <p style="padding-top: 10px;" class="bold-font">
-                              <%= list[i].petName %>
-                            </p>
-                            <p>
-                              <%= list[i].bio.substring(0,50)+ "..." %>
-                            </p>
+                <% if(list.length==0){%>
+                  <img src="../public/image/ic_cat_sleeping.png">
+                  <% } %>
+                    <div class="container">
+                      <div id="list_container" class="row">
+                        <% for(var i=0; i<list.length; i++){ %>
+                          <div class="col-md-4 col-lg-3 col-sm-6">
+                            <div
+                              class="section-2-rectangle d-flex flex-column justify-content-center align-items-center">
+                              <div class="section-2-content">
+                                <img id="img<%=i%>" src="<%=list[i].petImageUrl%>"
+                                  class="section-2-img" />
+                                <p style="padding-top: 10px;" class="bold-font">
+                                  <%= list[i].petName %>
+                                </p>
+                                <p>
+                                  <%= list[i].bio.substring(0,10)+ "..." %>
+                                </p>
+                              </div>
+                              <div class="section-2-circle" id="<%=i%>">
+                                <img class="heart-icon" id="icon<%=i%>" <% if(usersLikedPetKeysIndex[i]>=0){%>
+                                src="image/ic_heart_filled.svg"
+                                <% }else{%>
+                                  src="image/ic_heart.svg"
+                                  <% } %>
+                                    alt="love icon" />
+                              </div>
+                            </div>
                           </div>
-                          <div class="section-2-circle" id="<%=i%>">
-                            <img class="heart-icon" id="icon<%=i%>" <% if(usersLikedPetKeysIndex[i]>=0){%>
-                            src="image/ic_heart_filled.svg"
-                            <% }else{%>
-                              src="image/ic_heart.svg"
-                              <% } %>
-                                alt="love icon" />
-                          </div>
-                        </div>
+                          <% } %>
                       </div>
-                      <% } %>
-                  </div>
               </section>
             </div>
           </div>

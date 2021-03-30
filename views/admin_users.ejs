@@ -1,0 +1,29 @@
+<%- include("partials/header_admin"); -%>
+    <div class="section1">
+        <div class="container">
+            <h2 style="text-align: center; color:#EA5455;">USERS</h2>
+            <table id="table-controller" style="text-align:center; margin-top: 30px" class="table table-hover">
+                <thead class="table-layout">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">USERNAME</th>
+                        <th scope="col">NO. OF PETS</th>
+                        <th scope="col">PROFILE</th>
+                        <th scope="col">DELETE</th>
+                    </tr>
+                </thead>
+                <tbody id="table-parent" style="text-align:center">
+                    <% for(var i=0; i<users.length; i++){ %> 
+                    <tr id="<%=i%>"class="row-style">
+                        <th scope="row"><%=i+1%></th>
+                        <td><%=users[i].firstName + " " + users[i].lastName%></td>
+                        <td><%=users[i].petCount%> </td>
+                        <td> <i class="fa fa-user-circle-o table-row-icon"></i> </a></td>
+                        <td><i style="cursor: pointer; " id ="trash-icon<%=i%>" data-uid ="<%=users[i].userUid%>" class="fa fa-trash table-row-icon"></i></td>
+                    </tr>
+                    <%} %> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%- include("partials/footer_admin"); -%>

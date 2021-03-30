@@ -1,0 +1,135 @@
+<%- include("partials/header_admin"); -%>
+<div class="section1">
+  <div class="container register-form">
+    <div class="form">
+      <div class="form-content">
+        <h2 class="sign-up-h2">Update Team</h2>
+        <div style="text-align: center" class="row">
+          <div
+            style="margin-bottom: 20px"
+            class="col-lg-12 col-sm-12 col-12 banner-bottom-row-adjust"
+          >
+            <% if(number==1){ %>
+            <input
+              type="radio"
+              id="radio1"
+              name="memberNumber"
+              checked
+              value="1"
+            />
+            <% } else{%>
+            <input type="radio" id="radio1" name="memberNumber" value="1" />
+            <% } %>
+
+            <label style="padding-right: 20px" id="r1" class="radio" for="other"
+              >Member 1</label
+            >
+            <% if(number==2){ %>
+            <input
+              type="radio"
+              id="radio2"
+              name="memberNumber"
+              checked
+              value="2"
+            />
+            <% } else{%>
+            <input type="radio" id="radio2" name="memberNumber" value="2" />
+            <% } %>
+            <label style="padding-right: 20px" id="r2" class="radio" for="other"
+              >Member 2</label
+            >
+
+            <% if(number==3){ %>
+            <input
+              type="radio"
+              id="radio3"
+              name="memberNumber"
+              value="3"
+              checked
+            />
+            <% } else{%>
+            <input type="radio" id="radio3" name="memberNumber" value="3" />
+            <% } %>
+
+            <label style="padding-right: 20px" id="r3" class="radio" for="other"
+              >Member 3</label
+            >
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <input
+                class="styling"
+                id="name"
+                type="text"
+                name=""
+                value="<%=member.name%>"
+                placeholder="Enter Name Here"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                class="styling"
+                id="role"
+                type="text"
+                name=""
+                value="<%=member.contribution%>"
+                placeholder="Enter Role Here"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                id="description"
+                type="text"
+                class="phone_number sign-up-input"
+                placeholder="Enter Description Here"
+                value="<%=member.description%>"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input
+                class="styling"
+                onclick="radioOne()"
+                id="fbUrl"
+                type="text"
+                name=""
+                value="<%=member.facebook%>"
+                placeholder="Enter Facebook Url"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                class="styling"
+                onclick="radioTwo()"
+                id="githubUrl"
+                type="text"
+                name=""
+                value="<%=member.github%>"
+                placeholder="Enter Github Url"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                class="styling"
+                onclick="radioThree()"
+                id="linkedinUrl"
+                type="text"
+                name=""
+                value="<%=member.linkedin%>"
+                placeholder="Enter LinkedIn Url"
+              />
+            </div>
+          </div>
+        </div>
+        <a
+          onclick="update()"
+          class="new-container custom-sign-up-button"
+          >Update</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<%- include("partials/footer_admin"); -%>

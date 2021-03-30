@@ -1,0 +1,82 @@
+<%- include("partials/header"); -%>
+<div class="section2-pet-profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12">
+        <div class="box2 box2-modified">
+          <img
+            id="img2"
+            class="round-image"
+            alt=""
+            src="<%=pet.petImageUrl%>"
+          />
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12">
+        <h2><%=pet.petName%></h2>
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-5">
+                <h6 class="mb-0">Gender :</h6>
+              </div>
+              <div class="col-sm-7 text-secondary"><%=pet.gender%></div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-5">
+                <h6 class="mb-0">Birth Date :</h6>
+              </div>
+              <div class="col-sm-7 text-secondary"><%=pet.birthDate%></div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-5">
+                <h6 class="mb-0">Primary Breed :</h6>
+              </div>
+              <div class="col-sm-7 text-secondary"><%=pet.primaryBreed%></div>
+            </div>
+            <hr />
+          
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="solid" />
+    <div class="section-box2">
+      <div class="row0">
+        <h5>Bio :</h5>
+        <p>
+       <%=pet.bio%> 
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-7 col-sm-6">
+              <h6 class="mb-0">Recent Vaccination :</h6>
+            </div>
+            <div class="col-md-5 col-sm-6 text-secondary"><%=pet.vaccinationDate%></div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-md-7 col-sm-6">
+              <h6 class="mb-0">Recent Diagnosed Disease:</h6>
+            </div>
+            <div class="col-md-5 col-sm-6 text-secondary"><%=pet.recentDiagnosedDisease%></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-right">
+        <button type="button" class="btn btn-warning ml-2">
+          CONTACT OWNER
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include("partials/footer"); -%>

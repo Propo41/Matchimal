@@ -13,6 +13,66 @@
   --color-white-ash: #f2f2f2;
   --color-yellow: #ffd96a;
 }
+/* the pet image and the edit button */
+.image {
+  position: relative;
+}
+/* circular image */
+.circular {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+.circular img {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+/* ** */
+
+input[type="date"] {
+  width: 80%;
+  padding: 12px;
+  border: 2px solid #ea5455;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  resize: vertical;
+  margin-left: 10%;
+  margin-right: 10%;
+  color: #333333;
+  font-family: "Saira Semi Condensed", sans-serif;
+}
+
+.image span {
+  background-color: var(--color-red);
+  color: #fff;
+  padding: 6px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  font-size: 13px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -0px;
+  right: 0px;
+}
+
+/* ** */
+
 body {
   background-color: var(--color-white-ash);
 }
@@ -119,7 +179,7 @@ input[type="password"] {
   font-family: "Saira Semi Condensed", sans-serif;
 }
 
-input[type="button"] {
+input[type="submit"] {
   background-color: #ea5455;
   color: #ffffff;
   border: none;
@@ -135,9 +195,10 @@ input[type="button"] {
   font-family: "Saira Semi Condensed", sans-serif;
 }
 
-input[type="button"]:hover {
+input[type="submit"]:hover {
   background-color: #f67576;
 }
+
 .btnSubmit {
   border: none;
   border-radius: 10px;
@@ -167,10 +228,207 @@ label {
   margin-left: 3%;
 }
 
-
-
-.mid-center-no-likes { 
-  top: 55%; 
-  left: 50%; 
-  transform: translateX(-50%) translateY(-50%); 
+.mid-center-no-likes {
+  top: 55%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
+
+/*MY PET CSS FILES*/
+
+#bio {
+  width: 94%;
+  margin-left: 3%;
+}
+
+.my-pet-container {
+  background-color: #ededed;
+  height: 180px;
+}
+
+.my-pet-image {
+  margin-left: 30px;
+  margin-top: 20px;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+.my-pet-image-dimension {
+  height: 200px;
+  width: 200px;
+}
+
+.container-float-left {
+  float: left;
+}
+
+.container-float-right {
+  float: right;
+}
+
+.add-pet-text {
+  margin-top: 25px;
+  margin-left: 50px;
+}
+
+.add-pet-delete {
+  margin-right: 60px;
+  margin-top: 50px;
+  font-size: 40px;
+  color: #ea5455;
+}
+
+.add-pet-parent-container {
+  height: auto;
+  padding-top: 10px;
+  margin-top: 10px;
+  background-color: #ededed;
+  font-family: "Saira Semi Condensed";
+}
+
+.myPets-list-header {
+  font-size: 1.5rem;
+  color: #ea5455;
+}
+.myPets-list-body {
+  font-size: 1.2rem;
+}
+
+.choose_file {
+  background-color: var(--color-ash);
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-left: 0%;
+  cursor: pointer;
+}
+
+.choose_file:hover {
+  background-color: #dbdbdb;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-left: 0%;
+  cursor: pointer;
+}
+
+
+
+/* Spinner styles starts */
+/* Absolute Center Spinner */
+.loading {
+  position: fixed;
+  z-index: 999;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+}
+
+/* Transparent Overlay */
+.loading:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.5);
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+  /* hide "loading..." text */
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.loading:not(:required):after {
+  content: '';
+  display: block;
+  font-size: 10px;
+  width: 50px;
+  height: 50px;
+  margin-top: -0.5em;
+
+  border: 15px solid #ea5455;
+  border-radius: 100%;
+  border-bottom-color: transparent;
+  -webkit-animation: spinner 1s linear 0s infinite;
+  animation: spinner 1s linear 0s infinite;
+}
+
+/* Animation */
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/* ** */

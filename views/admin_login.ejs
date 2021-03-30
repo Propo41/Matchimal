@@ -1,0 +1,15 @@
+<%- include("partials/header_no_nav"); -%>
+    <div class="section1">
+        <div class="container">
+            <h2>ADMIN</h2>
+            <form action="/" id="form" class="form login-input" method="POST">
+                <input type="text" id="id" name="email" placeholder="ID">
+                <input type="password" id="pin" name="password" placeholder="Pin">
+                <input id="loginButton" type="login"  onclick="login()" value="Log in">
+            </form>
+        </div>
+    </div>
+
+    <div style="height: 100px;"></div>
+
+<%- include("partials/footer_no_nav"); -%>
